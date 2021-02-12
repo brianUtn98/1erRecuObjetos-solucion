@@ -68,7 +68,7 @@ class Chiste inherits Producto{
 }
 
 class Juego inherits Producto{
-	var property montoFijo
+	var property derechosDeAutor
 }
 
 class Usuario{

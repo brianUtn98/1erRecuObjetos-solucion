@@ -76,6 +76,7 @@ class Usuario{
 	var property dineroEnCuenta
 	var property empresa
 	var property tipoPlan
+	var property montoAcumulado = 0
 	method recargo(monto) = tipoPlan.recargo(monto) 
 	
 	method puedePagar(monto) = dineroEnCuenta > monto
@@ -89,6 +90,10 @@ class Usuario{
 	}
 	
 	method montoParaDeEmpresa(derechosDeAutor) = empresa.montopara(derechosDeAutor)
+	
+	method agregarAcumulado(monto){
+		montoAcumulado+=monto
+	}
 }
 
 class EmpresaTelecomunicaciones{
@@ -131,5 +136,9 @@ object prepago{
 
 object facturado{
 	method recargo(monto) = 0
+	
+	method descontar(monto,usuario){
+		usuario.agregarAcumulado(monto)
+	}
 }
 

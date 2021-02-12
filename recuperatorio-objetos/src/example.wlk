@@ -39,7 +39,7 @@ object empresa{
 	method esColgado(cliente) = self.tieneDescargasRepetidas(cliente)
 	
 	method tieneDescargasRepetidas(cliente){
-		return self.descargasDeUsuario(cliente).size() > self.descargasDeUsuario(cliente).asSet().size()
+		return self.descargasDeUsuario(cliente).map({unaDescarga => unaDescarga.producto()}).size() > self.descargasDeUsuario(cliente).map({unaDescarga => unaDescarga.producto()}).asSet().size()
 	}
 	
 	method masDescargado(fecha) = self.descargasDelDia(fecha).max({unaDescarga => unaDescarga.producto().descargas()})

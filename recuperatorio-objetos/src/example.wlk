@@ -3,7 +3,7 @@ object empresa{
 	
 	method precioDescarga(producto,usuario){
 		const derechosDeAutor = producto.derechosDeAutor()
-		const totalSinRecargo = usuario.empresa().montoPara(derechosDeAutor) + self.gananciaEmpresa(derechosDeAutor)
+		const totalSinRecargo = usuario.montoParaDeEmpresa(derechosDeAutor) + self.gananciaEmpresa(derechosDeAutor)
 		return usuario.recargo(totalSinRecargo) + totalSinRecargo
 	}
 	
@@ -87,6 +87,8 @@ class Usuario{
 	method quitarDinero(monto) {
 		dineroEnCuenta -= monto
 	}
+	
+	method montoParaDeEmpresa(derechosDeAutor) = empresa.montopara(derechosDeAutor)
 }
 
 class EmpresaTelecomunicaciones{
